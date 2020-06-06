@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activity.homescreen.HomeScreenActivity">
+
+    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardviewoptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="15dp"
+        android:background="@android:color/white"
+        card_view:cardCornerRadius="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgFlight"
+                android:layout_width="50dp"
+                android:src="@drawable/ic_international"
+                android:layout_height="50dp"/>
+
+            <TextView
+                android:id="@+id/txtDesction"
+                android:layout_below="@+id/imgFlight"
+                android:layout_width="wrap_content"
+                android:text="Domestic flights open from 25 May Follow the guidelines for safetravel"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/txtcheckguideline"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@+id/txtDesction"
+                android:text="@string/checkguidelines"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/imgRightArror"
+                android:layout_width="50dp"
+                android:layout_toEndOf="@+id/txtcheckguideline"
+                android:src="@drawable/ic_chevron"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/txtDesction"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/txtcheckguideline" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

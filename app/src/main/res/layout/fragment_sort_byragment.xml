@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".activity.filterscreen.tabfrgament.SortByragment">
+
+    <RelativeLayout
+        android:id="@+id/rlPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/imgicons"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/rupee"
+            android:textColor="@color/colorPrimary"
+            android:tint="@color/colorPrimary"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/imgicons"
+            android:layout_toRightOf="@+id/imgicons"
+            android:text="@string/price"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtchepestfirst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/imgCheck"
+            android:layout_toLeftOf="@+id/imgCheck"
+            android:text="@string/chepestfirst"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            tools:ignore="RelativeOverlap" />
+
+        <ImageView
+            android:id="@+id/imgCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_check"
+            android:tint="@color/colorPrimary"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/viewone"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/imgicons"
+            android:layout_marginTop="10dp"
+            android:background="@color/grey" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlPrice"
+        android:layout_marginTop="10dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/imgiconsduration"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/time"
+            android:textColor="@color/colorPrimary"
+            android:tint="@android:color/black"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/imgiconsduration"
+            android:layout_toRightOf="@+id/imgiconsduration"
+            android:text="@string/duration"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtchepestfirstduration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/imgCheckDuration"
+            android:layout_toLeftOf="@+id/imgCheckDuration"
+            android:text="@string/shortestfirst"
+            android:textSize="16sp"
+            tools:ignore="RelativeOverlap" />
+
+        <ImageView
+            android:id="@+id/imgCheckDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_check"
+            android:tint="@color/colorPrimary"
+            android:visibility="invisible"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/imgCheckDuration"
+            android:layout_marginTop="10dp"
+            android:background="@color/grey" />
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/rrdeprturetime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlDuration"
+        android:layout_marginTop="10dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/imgiconsdearrivaltime"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/plane"
+            android:textColor="@color/colorPrimary"
+            android:tint="@android:color/black"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/imgiconsdearrivaltime"
+            android:layout_toRightOf="@+id/imgiconsdearrivaltime"
+            android:text="@string/departuretime"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/txtchepestfirstarriavaltime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/imgCheckarrivaltime"
+            android:layout_toLeftOf="@+id/imgCheckarrivaltime"
+            android:text="@string/earliestfirst"
+            android:textSize="16sp"
+            tools:ignore="RelativeOverlap" />
+
+
+        <ImageView
+            android:id="@+id/imgCheckarrivaltime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_check"
+            android:tint="@color/colorPrimary"
+            android:visibility="invisible"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/imgCheckarrivaltime"
+            android:layout_marginTop="10dp"
+            android:background="@color/grey" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rrdeprturetime"
+        android:layout_marginTop="10dp"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/imgiconsdeparturetime"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/landing"
+            android:textColor="@color/colorPrimary"
+            android:tint="@android:color/black"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/imgiconsdeparturetime"
+            android:layout_toRightOf="@+id/imgiconsdeparturetime"
+            android:text="@string/arrivaltime"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/txtchepestfirstdeparturetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/imgCheckdeparturetime"
+            android:layout_toLeftOf="@+id/imgCheckdeparturetime"
+            android:text="@string/earliestfirst"
+            android:textSize="16sp"
+            tools:ignore="RelativeOverlap" />
+
+
+        <ImageView
+            android:id="@+id/imgCheckdeparturetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_check"
+            android:tint="@color/colorPrimary"
+            android:visibility="invisible"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/imgCheckdeparturetime"
+            android:layout_marginTop="10dp"
+            android:background="@color/grey" />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/roundbutton"
+        android:text="@string/apply"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

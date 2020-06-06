@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:id="@+id/rlSearch"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/colorPrimary">
+
+            <EditText
+                android:id="@+id/etfriend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/roundeditext"
+                android:drawableStart="@drawable/ic_search"
+                android:drawableLeft="@drawable/ic_search"
+                android:gravity="start"
+                android:hint="@string/search"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textAlignment="textStart"
+                tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cardviewoptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlSearch"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/white"
+            card_view:cardCornerRadius="5dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rrCatgory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="20dp" />
+        </androidx.cardview.widget.CardView>
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/llBottomview"
+            android:layout_below="@+id/cardviewoptions">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rlBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rrBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rlBanner"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/txtpopulardestinations"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/populardestinations"
+                        android:layout_marginStart="5dp"
+                        android:textColor="@color/textcolor"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="5dp" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rrPopularDestinations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtpopulardestinations"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/llBottomview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:ignore="UseCompoundDrawables,UselessParent">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:tint="@android:color/white"
+                    android:src="@drawable/home"
+                    android:layout_height="20dp"
+                    tools:ignore="ContentDescription" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:ignore="UseCompoundDrawables,UselessParent">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:tint="@android:color/white"
+                    android:src="@drawable/mytrip"
+                    android:layout_height="20dp"
+                    tools:ignore="ContentDescription" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mytrip"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:ignore="UseCompoundDrawables,UselessParent">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:tint="@android:color/white"
+                    android:src="@drawable/offers"
+                    android:layout_height="20dp"
+                    tools:ignore="ContentDescription" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/offers"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:ignore="UseCompoundDrawables,UselessParent">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:tint="@android:color/white"
+                    android:src="@drawable/idea"
+                    android:layout_height="20dp"
+                    tools:ignore="ContentDescription" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tripideas"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>
