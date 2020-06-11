@@ -1,6 +1,6 @@
 package com.mylivingtrip.app.retrofit
 
-import android.util.Base64
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,11 +21,13 @@ object RetrofitClient {
                 val request = requestBuilder.build()
                 chain.proceed(request)
             }.build()
-
+    var gson = GsonBuilder()
+            .setLenient()
+            .create()
     val instance: Api by lazy{
         val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build()
 

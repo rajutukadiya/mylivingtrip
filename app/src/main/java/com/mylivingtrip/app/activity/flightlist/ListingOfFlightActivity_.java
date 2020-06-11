@@ -5,8 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +21,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.mylivingtrip.app.R;
 import com.mylivingtrip.app.activity.filterscreen.FilterActivity;
@@ -23,6 +30,7 @@ import com.mylivingtrip.app.fragment.response.ListOfFightResponse;
 import com.mylivingtrip.app.fragment.response.test;
 import com.mylivingtrip.app.retrofit.ApiClient;
 import com.mylivingtrip.app.retrofit.ApiInterface;
+import com.mylivingtrip.app.utils.InternetConnection;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,6 +63,7 @@ public class ListingOfFlightActivity_ extends AppCompatActivity implements View.
 
     }
 
+
     private void initialization() {
 
         activityDashboardBinding = DataBindingUtil.setContentView(this, R.layout.activity_listing_of_flight);
@@ -63,9 +72,70 @@ public class ListingOfFlightActivity_ extends AppCompatActivity implements View.
 
         sortbyandfilterlist();
 
+        if (InternetConnection.checkConnection(getApplicationContext())) {
+            getList();
+        } else {
+            Toast.makeText(this, "please check your internet connection", Toast.LENGTH_SHORT).show();
+        }
 
-        getList();
+        setTitel();
 
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setTitel()
+    {
+        Intent intent = getIntent();
+        String flightadlval = intent.getStringExtra("flightadlval");
+        String flightchldval = intent.getStringExtra("flightchldval");
+        String flightinfantval = intent.getStringExtra("flightinfantval");
+        String tocityName = intent.getStringExtra("cityname");
+        String fromcityname = intent.getStringExtra("fromcityname");
+
+        activityDashboardBinding.txtsourcetodestination.setText(tocityName +" to "+ fromcityname);
+       int total =Integer.parseInt(flightadlval)+
+               Integer.parseInt(flightchldval)+
+               Integer.parseInt(flightinfantval);
+        String todatewithmotnname = intent.getStringExtra("todatewithmotnname");
+        String returndatamothname = intent.getStringExtra("returndatamothname");
+        String cabinclass = intent.getStringExtra("cabinclass");
+
+        String fullDetails="";
+        assert todatewithmotnname != null;
+        if(!todatewithmotnname.isEmpty() && !returndatamothname.isEmpty())
+        {
+            fullDetails=todatewithmotnname + "-"+returndatamothname+ " | ";
+
+        }
+        else
+        {
+            fullDetails=todatewithmotnname+ " | ";
+
+        }
+
+        int flightchld= Integer. parseInt(flightchldval);
+            int flightinfant= Integer. parseInt(flightinfantval);
+            if(flightchld==0 && flightinfant==0)
+            {
+                if(Integer. parseInt(flightadlval)>1)
+                {
+                    fullDetails=fullDetails+" | "+flightadlval +" Adults | ";
+                }
+                else
+                {
+                    fullDetails=fullDetails+" "+flightadlval +" Adult | ";
+                }
+
+
+            }
+            else
+            {
+                fullDetails=fullDetails+" "+total +" Travellers | ";
+            }
+
+
+
+        activityDashboardBinding.txtDetails.setText(fullDetails+""+cabinclass);
     }
 
     private void listener() {
@@ -78,13 +148,33 @@ public class ListingOfFlightActivity_ extends AppCompatActivity implements View.
     {
 
         Intent intent = getIntent();
-
         String to = intent.getStringExtra("to");
         String from = intent.getStringExtra("from");
+        String flightadlval = intent.getStringExtra("flightadlval");
+        String flightchldval = intent.getStringExtra("flightchldval");
+        String flightinfantval = intent.getStringExtra("flightinfantval");
+        String flightbusinessclass = intent.getStringExtra("flightbusinessclass");
+        String todate = intent.getStringExtra("date_");
+        String returndata = intent.getStringExtra("returndata");
+
+        Log.e("to",to);
+        Log.e("from",from);
+        Log.e("flightadlval",flightadlval);
+        Log.e("flightchldval",flightchldval);
+        Log.e("flightinfantval",flightinfantval);
+        Log.e("flightbusinessclass",flightbusinessclass);
+        Log.e("todate",todate+"");
+        Log.e("returndata",returndata+"");
+
+        if(returndata==null)
+        {
+            returndata="";
+        }
+
         activityDashboardBinding.progressBar.setVisibility(View.VISIBLE);
 
             test task = new test("1","1","1","1",from,
-                    to,"2","2020-07-10","2020-07-17");
+                    to,"2",todate,"");
 
             ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
@@ -102,7 +192,7 @@ public class ListingOfFlightActivity_ extends AppCompatActivity implements View.
 
                 if(response.body()!=null)
                 {
-                    flightListing(response.body().getSearchresult());
+                    flightListing(response.body().getSearchresult(),response.body().getAirlines());
                 }
 
             }
@@ -143,11 +233,11 @@ public class ListingOfFlightActivity_ extends AppCompatActivity implements View.
 
     }
 
-    private void flightListing(ListOfFightResponse.SearchresultBean searchresult) {
+    private void flightListing(ListOfFightResponse.SearchresultBean searchresult, ListOfFightResponse.AirlinesBean airlines) {
         activityDashboardBinding.rrListOfFlights.setHasFixedSize(true);
         activityDashboardBinding.rrListOfFlights.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        MyAdapterFlightList = new MyAdapterFlightList(searchresult.getFirst());
+        MyAdapterFlightList = new MyAdapterFlightList(searchresult.getFirst(),airlines);
         activityDashboardBinding.rrListOfFlights.setAdapter(MyAdapterFlightList);
     }
 
@@ -214,10 +304,11 @@ public class ListingOfFlightActivity_ extends AppCompatActivity implements View.
     }
 
     public class MyAdapterFlightList extends RecyclerView.Adapter<MyAdapterFlightList.ViewHolder> {
-        private List<ListOfFightResponse.SearchresultBean.FirstBean> values;
-
-        public MyAdapterFlightList(List<ListOfFightResponse.SearchresultBean.FirstBean> myDataset) {
-            values = myDataset;
+        private List<ListOfFightResponse.SearchresultBean.FirstBean> firstBeans;
+        private   ListOfFightResponse.AirlinesBean airlinesBean;
+        public MyAdapterFlightList(List<ListOfFightResponse.SearchresultBean.FirstBean> myDataset, ListOfFightResponse.AirlinesBean airlines) {
+            firstBeans = myDataset;
+            airlinesBean=airlines;
         }
 
         @Override
@@ -255,15 +346,30 @@ public class ListingOfFlightActivity_ extends AppCompatActivity implements View.
             @SuppressLint("SimpleDateFormat")
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             try {
-                Date dateto = format.parse(values.get(position).getOrigin().getDepTime());
+                Date dateto = format.parse(firstBeans.get(position).getOrigin().getDepTime());
 
-                Date datefrom = format.parse(values.get(position).getDestination().getArrTime());
+                Date datefrom = format.parse(firstBeans.get(position).getDestination().getArrTime());
 
                 holder.txtToTime.setText(convertDate(dateto));
                 holder.txtFromTime.setText(convertDate(datefrom));
-                holder.txttcityname.setText(values.get(position).getOrigin().getFromCity());
-                holder.txtfromcity.setText(values.get(position).getDestination().getToCity());
-                holder.txtPrice.setText("₹ "+values.get(position).getTotal_fare());
+                holder.txttcityname.setText(firstBeans.get(position).getOrigin().getFromCity());
+                holder.txtfromcity.setText(firstBeans.get(position).getDestination().getToCity());
+                holder.txtPrice.setText("₹ "+firstBeans.get(position).getTotal_fare());
+
+                if(firstBeans.get(position).getAirline()!=null)
+                {
+                   if(airlinesBean.get_$6E().getAirlineCode()==firstBeans.get(position).getAirline().getAirlineCode())
+                   {
+
+                       Glide.with(getApplicationContext())
+                               .load(airlinesBean.get_$6E().getAirlineLogo())
+                               .error(R.drawable.ic_flight)
+                               .into( holder.imgFlight);
+                   }
+
+
+                }
+
 
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -272,13 +378,14 @@ public class ListingOfFlightActivity_ extends AppCompatActivity implements View.
 
         @Override
         public int getItemCount() {
-            return values.size();
+            return firstBeans.size();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
 
             public View layout;
             private TextView  txtToTime,txttcityname,txtFromTime,txtfromcity,txtPrice;
+            private ImageView imgFlight;
 
             public ViewHolder(View v) {
                 super(v);
@@ -288,6 +395,7 @@ public class ListingOfFlightActivity_ extends AppCompatActivity implements View.
                 txtFromTime=v.findViewById(R.id.txtFromTime);
                 txtfromcity=v.findViewById(R.id.txtfromcity);
                 txtPrice=v.findViewById(R.id.txtPrice);
+                imgFlight=v.findViewById(R.id.imgFlight);
             }
         }
 

@@ -68,4 +68,6 @@
     <string name="business">Business</string>
     <string name="premiumbusiness">PremiumBusiness</string>
     <string name="first">First</string>
+    <string name="done">Done</string>
+    <string name="action_search">search</string>
 </resources>

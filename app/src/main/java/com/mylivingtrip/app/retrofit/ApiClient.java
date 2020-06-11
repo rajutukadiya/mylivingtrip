@@ -1,5 +1,8 @@
 package com.mylivingtrip.app.retrofit;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -18,12 +21,13 @@ public class ApiClient {
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.MINUTES)
                 .readTimeout(10,TimeUnit.MINUTES).build();
+
+
         if (retrofit==null) {
 
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .client(client)
-
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.travellersandclass.TravellersandClassActivity">
@@ -368,10 +369,11 @@
             android:id="@+id/btnAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/roundbutton"
+            android:background="@drawable/roundselecter"
             android:text="@string/all"
             android:textAllCaps="false"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/colorAccent" />
+
 
         <Button
             android:id="@+id/btnPreminumEconomy"
@@ -383,11 +385,11 @@
             android:layout_marginRight="20dp"
             android:layout_toEndOf="@+id/btnAll"
             android:layout_toRightOf="@+id/btnAll"
-            android:background="@drawable/roundbutton"
+            android:background="@drawable/roundselecter"
             android:padding="10dp"
             android:text="@string/premiumeconomy"
             android:textAllCaps="false"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/colorAccent" />
 
         <Button
             android:id="@+id/btnEconomy"
@@ -401,18 +403,6 @@
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/btnAll"
-            android:layout_toRightOf="@+id/btnAll"
-            android:background="@drawable/roundselecter"
-            android:padding="10dp"
-            android:text="@string/premiumeconomy"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimary" />
         <Button
             android:id="@+id/btnBussines"
             android:layout_width="wrap_content"
@@ -468,7 +458,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rlSearch"
+        android:id="@+id/rlDone"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -478,7 +468,7 @@
         android:paddingTop="10dp">
         <TextView
             android:layout_width="wrap_content"
-            android:text="@string/Search"
+            android:text="@string/done"
             android:textSize="16sp"
             android:textColor="@android:color/white"
             android:layout_centerInParent="true"
@@ -487,3 +477,4 @@
     </RelativeLayout>
 
 </RelativeLayout>
+</layout>

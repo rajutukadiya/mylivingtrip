@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.mylivingtrip.app">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,14 +16,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.travellersandclass.TravellersandClassActivity"></activity>
-        <activity android:name=".activity.homescreen.CityNameListActivity" />
-        <activity android:name=".activity.filterscreen.FilterActivity" />
-        <activity android:name=".activity.flightlist.ListingOfFlightActivity_" />
-        <activity android:name=".activity.homescreen.HomeScreenActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.homescreen.CityListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.travellersandclass.TravellersandClassActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.homescreen.CityNameListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.filterscreen.FilterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.flightlist.ListingOfFlightActivity_"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.splashscreen.SplashScreenActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

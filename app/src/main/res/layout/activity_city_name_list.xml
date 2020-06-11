@@ -24,6 +24,7 @@
             tools:ignore="ContentDescription" />
 
         <EditText
+            android:id="@+id/edtsearch"
             android:layout_width="match_parent"
             android:layout_margin="5dp"
             android:padding="5dp"

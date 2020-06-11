@@ -36,6 +36,7 @@ class ListingOfFlightActivity : AppCompatActivity() {
         activityListingOfFlightBinding = DataBindingUtil.setContentView(this, R.layout.activity_listing_of_flight);
 
 
+
         if (isOnline(applicationContext)) {
             getFlightList()
         } else {
